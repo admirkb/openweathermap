@@ -3,3 +3,20 @@
 </p>
 <a [routerLink]="['/weather', { c: 'Blaina'} ]">Blaina</a>
 <a [routerLink]="['/weather', { c: 'Abertillery'} ]">Abertillery</a>
+<a [routerLink]="['/weather', { c: 'Riga'} ]">Riga</a>
+<a [routerLink]="['/weather', { c: 'Palma'} ]">Palma</a>
+
+
+<div *ngFor="let o of weather; let key = index">
+  <div style="float:left;" [innerHTML]= "'Description @&nbsp;'"></div><div [innerHTML]="o.description"></div>
+  <img style="width:50px; height:50px" src="../../assets/svg/{{o.icon}}.svg" />
+</div>
+
+<div style="float:left;" [innerHTML]= "'Humidity @&nbsp;'"></div><div [innerHTML]="humidity"></div>
+<div style="float:left;" [innerHTML]= "'Pressure @&nbsp;'"></div><div [innerHTML]="pressure"></div>
+<div style="float:left;" [innerHTML]= "'Temp. @&nbsp;'"></div><div [innerHTML]="temp"></div>
+<div style="float:left;" [innerHTML]= "'Temp. Min. @&nbsp;'"></div><div [innerHTML]="temp_min"></div>
+<div style="float:left;" [innerHTML]= "'Temp. Max. @&nbsp;'"></div><div [innerHTML]="temp_max"></div>
+
+<div style="float:left;" [innerHTML]= "'Sunrise @&nbsp;'"></div><div [innerHTML]= "sunrise | date:  'HH:MM'"></div>
+<div style="float:left;" [innerHTML]= "'Sunset @&nbsp;'"></div><div [innerHTML]= "sunset | date:  'HH:MM'"></div>

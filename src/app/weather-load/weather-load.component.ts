@@ -13,6 +13,16 @@ export class WeatherLoadComponent implements OnInit {
   public urlArgs: string;
   private lang = "en"
   private _city: string;
+  private data: any;
+  private weather: any;
+  private main: any;
+  private humidity: any;
+  private pressure: any;
+  private temp: any;
+  private temp_max: any;
+  private temp_min: any;
+    private sunrise: any;
+        private sunset: any;
   constructor(private weatherService: WeatherService, protected route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -40,9 +50,20 @@ export class WeatherLoadComponent implements OnInit {
 
 
     this.weatherService.get(this.urlArgs).subscribe((data: any) => {
-      console.log("weatherService Results")
-
+      this.data = data;
+      this.weather = data.weather;
+      this.main = data.main;
+      this.temp = data.main.temp;
       console.dir(data)
+
+      this.humidity = data.main.humidity;
+      this.pressure = data.main.pressure;
+      this.temp = data.main.temp;
+      this.temp_max = data.main.temp_max;
+      this.temp_min = data.main.temp_min;
+
+      this.sunrise = new Date(1000*data.sys.sunrise);
+      this.sunset = new Date(1000*data.sys.sunset);
     });
   }
 

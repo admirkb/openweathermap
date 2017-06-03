@@ -12,18 +12,18 @@ export class WeatherLoadComponent implements OnInit {
   private sub: Subscription;
   public urlArgs: string;
   private lang = "en"
-  private city: string;
+  public city: string;
   private data: any;
-  private weather: any;
+  public weather: any;
   private main: any;
-  private humidity: any;
-  private pressure: any;
-  private temp: any;
-  private temp_max: any;
-  private temp_min: any;
-  private sunrise: any;
-  private sunset: any;
-  private today:Date;
+  public humidity: any;
+  public pressure: any;
+  public temp: any;
+  public temp_max: any;
+  public temp_min: any;
+  public sunrise: any;
+  public sunset: any;
+  public today:Date;
 
   constructor(private weatherService: WeatherService, protected route: ActivatedRoute) {
     this.today = new Date();

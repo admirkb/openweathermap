@@ -14,8 +14,11 @@
 <div *ngFor="let o of weather; let key = index">
   <div class="details" style="float:left;" [innerHTML]="'We have ' + o.description"></div>
   <!--<div class="details" style="float:left;" [innerHTML]="'We have ' + o.icon"></div>-->
-  <div class="details">
+  <!--<div class="details">
     <img class="details" style="width:150px; height:150px" src="../../assets/svg/{{o.icon}}.svg" />
+  </div>-->
+  <div class="details">
+    <img style="width:150px; height:150px" src="http://openweathermap.org/img/w/{{o.icon}}.png" />
   </div>
 
 </div>
@@ -33,4 +36,4 @@
 <div class="details" style="float:left;" [innerHTML]="'Sunset is @&nbsp;' + (sunset | date:  'HH:mm')"></div>
 
 
-  <div class="center" style="float:left;" [innerHTML]="(today | date:  'HH:mm')"></div>
+<div class="center" style="float:left;" [innerHTML]="(today | date:  'HH:mm')"></div>

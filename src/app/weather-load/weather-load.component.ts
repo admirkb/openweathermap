@@ -12,7 +12,7 @@ export class WeatherLoadComponent implements OnInit {
   private sub: Subscription;
   public urlArgs: string;
   private lang = "en"
-  private _city: string;
+  private city: string;
   private data: any;
   private weather: any;
   private main: any;
@@ -21,9 +21,13 @@ export class WeatherLoadComponent implements OnInit {
   private temp: any;
   private temp_max: any;
   private temp_min: any;
-    private sunrise: any;
-        private sunset: any;
-  constructor(private weatherService: WeatherService, protected route: ActivatedRoute) { }
+  private sunrise: any;
+  private sunset: any;
+  private today:Date;
+
+  constructor(private weatherService: WeatherService, protected route: ActivatedRoute) {
+    this.today = new Date();
+   }
 
   ngOnInit() {
 
@@ -32,10 +36,10 @@ export class WeatherLoadComponent implements OnInit {
 
     this.sub = this.route.params.subscribe(params => {
 
-      (params['c'] !== undefined) ? this._city = params['c'] : null;
+      (params['c'] !== undefined) ? this.city = params['c'] : null;
 
 
-      this.GetWeatherDetails('weather?q=' + this._city + ',uk&units=metric&lang=' + this.lang);
+      this.GetWeatherDetails('weather?q=' + this.city + ',uk&units=metric&lang=' + this.lang);
       // this.GetWeatherDetails('forecast?q=Blaina,uk&units=metric&lang=' + this.lang);
     });
 
@@ -62,8 +66,8 @@ export class WeatherLoadComponent implements OnInit {
       this.temp_max = data.main.temp_max;
       this.temp_min = data.main.temp_min;
 
-      this.sunrise = new Date(1000*data.sys.sunrise);
-      this.sunset = new Date(1000*data.sys.sunset);
+      this.sunrise = new Date(1000 * data.sys.sunrise);
+      this.sunset = new Date(1000 * data.sys.sunset);
     });
   }
 

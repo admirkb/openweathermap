@@ -1,22 +1,36 @@
-<p>
-  weather-load works!
-</p>
-<a [routerLink]="['/weather', { c: 'Blaina'} ]">Blaina</a>
+<div class="center">
+  Weather for {{city}}
+</div>
+<!--<a [routerLink]="['/weather', { c: 'Blaina'} ]">Blaina</a>
 <a [routerLink]="['/weather', { c: 'Abertillery'} ]">Abertillery</a>
 <a [routerLink]="['/weather', { c: 'Riga'} ]">Riga</a>
-<a [routerLink]="['/weather', { c: 'Palma'} ]">Palma</a>
+<a [routerLink]="['/weather', { c: 'Palma'} ]">Palma</a>-->
 
+
+<br/>
+
+<!--<div class="details" style="float:left;" [innerHTML]="'City @&nbsp;' + city"></div>-->
 
 <div *ngFor="let o of weather; let key = index">
-  <div style="float:left;" [innerHTML]= "'Description @&nbsp;'"></div><div [innerHTML]="o.description"></div>
-  <img style="width:50px; height:50px" src="../../assets/svg/{{o.icon}}.svg" />
+  <div class="details" style="float:left;" [innerHTML]="'We have ' + o.description"></div>
+  <!--<div class="details" style="float:left;" [innerHTML]="'We have ' + o.icon"></div>-->
+  <div class="details">
+    <img class="details" style="width:150px; height:150px" src="../../assets/svg/{{o.icon}}.svg" />
+  </div>
+
 </div>
 
-<div style="float:left;" [innerHTML]= "'Humidity @&nbsp;'"></div><div [innerHTML]="humidity"></div>
-<div style="float:left;" [innerHTML]= "'Pressure @&nbsp;'"></div><div [innerHTML]="pressure"></div>
-<div style="float:left;" [innerHTML]= "'Temp. @&nbsp;'"></div><div [innerHTML]="temp"></div>
-<div style="float:left;" [innerHTML]= "'Temp. Min. @&nbsp;'"></div><div [innerHTML]="temp_min"></div>
-<div style="float:left;" [innerHTML]= "'Temp. Max. @&nbsp;'"></div><div [innerHTML]="temp_max"></div>
+<div class="details" style="float:left;" [innerHTML]="'Temperature is&nbsp;' + temp + ' degrees'"></div>
+<!--<div class="details" style="float:left;" [innerHTML]="'Temperature (Min) is&nbsp;' + temp_min + ' degrees'"></div>
+<div class="details" style="float:left;" [innerHTML]="'Temperature (Max) is&nbsp;' + temp_max + ' degrees'"></div>-->
 
-<div style="float:left;" [innerHTML]= "'Sunrise @&nbsp;'"></div><div [innerHTML]= "sunrise | date:  'HH:MM'"></div>
-<div style="float:left;" [innerHTML]= "'Sunset @&nbsp;'"></div><div [innerHTML]= "sunset | date:  'HH:MM'"></div>
+<div class="details" style="float:left;" [innerHTML]="'Humidity is @&nbsp;' + humidity + '&nbsp;%'"></div>
+<div class="details" style="float:left;" [innerHTML]="'Pressure is @&nbsp;' + pressure+ '&nbsp;millibars'"></div>
+
+
+
+<div class="details" style="float:left;" [innerHTML]="'Sunrise is @&nbsp;' + (sunrise | date:  'HH:mm')"></div>
+<div class="details" style="float:left;" [innerHTML]="'Sunset is @&nbsp;' + (sunset | date:  'HH:mm')"></div>
+
+
+  <div class="center" style="float:left;" [innerHTML]="(today | date:  'HH:mm')"></div>

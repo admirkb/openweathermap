@@ -27,6 +27,7 @@ export class WeatherLoadComponent implements OnInit {
 
   constructor(private weatherService: WeatherService, protected route: ActivatedRoute) {
     this.today = new Date();
+    this.city = "Palma";
    }
 
   ngOnInit() {
@@ -35,6 +36,7 @@ export class WeatherLoadComponent implements OnInit {
     // http://www.vu-it.es/customerChannel1;cId=DtJiXFJACHi3QJ9Ym;chId=1;showListing=true;etag=true
 
     this.sub = this.route.params.subscribe(params => {
+
 
       (params['c'] !== undefined) ? this.city = params['c'] : null;
 
